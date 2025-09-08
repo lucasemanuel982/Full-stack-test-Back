@@ -76,6 +76,50 @@ npm run dev
 npm start
 ```
 
+## Autenticação
+
+A API utiliza um token fixo simples para autenticação.
+
+### Token Fixo
+```
+n8n-api-token-2024-fixed-access
+```
+
+### Como Usar
+
+**Opção 1 - Header Authorization:**
+```http
+Authorization: Bearer n8n-api-token-2024-fixed-access
+```
+
+**Opção 2 - Header x-access-token:**
+```http
+x-access-token: n8n-api-token-2024-fixed-access
+```
+
+### Configuração no Postman
+
+**Opção 1 - Header Authorization:**
+1. Abra o Postman
+2. Vá para a aba **Headers**
+3. Adicione:
+   - **Key**: `Authorization`
+   - **Value**: `Bearer n8n-api-token-2024-fixed-access`
+
+**Opção 2 - Header x-access-token:**
+1. Abra o Postman
+2. Vá para a aba **Headers**
+3. Adicione:
+   - **Key**: `x-access-token`
+   - **Value**: `n8n-api-token-2024-fixed-access`
+
+### Exemplo com cURL
+```bash
+curl -X POST http://localhost:3001/api/data/execute \
+  -H "Authorization: Bearer n8n-api-token-2024-fixed-access" \
+  -H "Content-Type: application/json"
+```
+
 ## 📚 API Endpoints
 
 ### Base URL
@@ -85,7 +129,7 @@ http://localhost:3001/api
 
 ### Endpoints Disponíveis
 
-#### 1. Executar Fluxo de Dados
+#### 1. Executar Fluxo de Dados (Requer Autenticação)
 ```http
 POST /api/data/execute
 ```
@@ -96,30 +140,28 @@ POST /api/data/execute
 3. Envia dados para N8N
 4. N8N salva no PostgreSQL
 
-
-#### 2. Limpar Dados
+#### 2. Limpar Dados (Requer Autenticação)
 ```http
 POST /api/data/clear
 ```
 
 **Descrição:** Limpa a tabela `users` no PostgreSQL via N8N
 
-**Resposta de Sucesso:**
-```json
-{
-  "success": true,
-  "message": "Dados limpos com sucesso"
-}
+#### 3. Buscar Dados (Requer Autenticação)
+```http
+GET /api/data/get-data
 ```
 
-#### 3. Health Check
+**Descrição:** Busca dados do webhook externo
+
+#### 4. Health Check
 ```http
 GET /api/data/health
 ```
 
 **Descrição:** Verifica o status dos serviços
 
-#### 4. Informações da API
+#### 5. Informações da API
 ```http
 GET /api/data/info
 ```

@@ -14,11 +14,11 @@ router.get('/', (req, res) => {
     version: '1.0.0',
     endpoints: {
       'GET /api': 'Informações da API',
-      'POST /api/data/execute': 'Executa fluxo completo de dados',
-      'POST /api/data/clear': 'Limpa dados no N8N e banco',
+      'POST /api/data/execute': 'Executa fluxo completo de dados (requer autenticação)',
+      'POST /api/data/clear': 'Limpa dados no N8N e banco (requer autenticação)',
       'GET /api/data/health': 'Verifica status dos serviços',
       'GET /api/data/info': 'Informações detalhadas da API',
-      'GET /api/data/get-data': 'Busca as informações do banco de dados através do webhook externo'
+      'GET /api/data/get-data': 'Busca as informações do banco de dados através do webhook externo (requer autenticação)'
     },
     documentation: 'Consulte /api/data/info para informações detalhadas'
   });

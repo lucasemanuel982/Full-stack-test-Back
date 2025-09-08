@@ -25,7 +25,9 @@ export const config: ServerConfig = {
   n8nWebhookUrl: process.env.N8N_WEBHOOK_URL!,
   n8nClearWebhookUrl: process.env.N8N_CLEAR_WEBHOOK_URL!,
   corsOrigin: process.env.CORS_ORIGIN || 'http://localhost:3000',
-  logLevel: process.env.LOG_LEVEL || 'info'
+  logLevel: process.env.LOG_LEVEL || 'info',
+  // Token fixo para autenticação
+  fixedToken: process.env.FIXED_TOKEN || 'n8n-api-token-2024-fixed-access'
 };
 
 // Validação da configuração

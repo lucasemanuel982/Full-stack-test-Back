@@ -30,6 +30,7 @@ export interface ServerConfig {
   n8nClearWebhookUrl: string;
   corsOrigin: string;
   logLevel: string;
+  fixedToken: string;
 }
 
 // Tipos para logs
